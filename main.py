@@ -1,4 +1,7 @@
 #!/usr/bin/python
-import start
+from src import messages
+from src import play
 
-start
+# Erst Ausgabe und Einführung ins Spiel
+messages.welcome_message()  # prints Welcome message to User
+play.play()
