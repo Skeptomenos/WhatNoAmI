@@ -1,14 +1,27 @@
 import messages
+import my_number
 
 
 def play(number):
-    no = number
+    no = int(number)
     while True:
-        guess = input("Welche Zahl bin ich? ")
-        if int(guess) == no:
+        guess = int(input("Welche Zahl bin ich? "))
+        if guess == no:
             print(messages.correct)
-            exit()
-        elif no < int(guess):
+            finish()
+        elif no < guess:
             print(messages.lower)
-        elif no > int(guess):
+        elif no > guess:
             print(messages.higher)
+
+
+def finish():
+    more = input("Möchtest du nochmal spielen? [J/n]").upper()
+    if more == "Y" or more == "J":
+        play(my_number.ask_for_number())
+    elif more == "N":
+        print("Bis zum nächsten mal!")
+        exit()
+    else:
+        print("Ich habe deine Antwort nicht verstanden. Bitte versuche es noch ein mal.\n")
+        finish()
